@@ -1,0 +1,206 @@
+<!--Tools Aggregator-->
+
+<div class="metric">
+  <div class="metric-heading">
+    <span>{{3.col1}}</span>
+    <strong>{{3.col2}}</strong>
+  </div>
+  <div class="track">
+    <div class="fill" style="width: {{3.col2}};"></div>
+  </div>
+</div>
+
+<!--Tools Variable Value-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; }
+
+
+  body {
+    margin: 0;
+    padding: 35px;
+    background: #edf1f5;
+    font-family: Arial, sans-serif;
+    color: #243246;
+  }
+
+
+  .report {
+    width: 1000px;
+    background: white;
+    padding: 45px;
+    border-radius: 18px;
+  }
+
+
+  .eyebrow {
+    color: #64748b;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+
+  h1 {
+    font-size: 32px;
+    margin: 12px 0;
+    color: #16283f;
+  }
+
+
+  .subtitle {
+    color: #64748b;
+    font-size: 16px;
+    margin-bottom: 35px;
+  }
+
+
+  .section-title {
+    font-size: 20px;
+    border-bottom: 2px solid #e5eaf0;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+  }
+
+
+  .metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px 35px;
+  }
+
+
+  .metric {
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 10px;
+    min-width: 0;
+  }
+
+
+  .metric-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+
+  .metric-heading span {
+    overflow-wrap: anywhere;
+  }
+
+
+  .metric-heading strong {
+    color: #193c60;
+    white-space: nowrap;
+  }
+
+.metric:has(.fill:not([style*="%"])) .metric-heading span {
+  font-weight: bold;
+  font-size: 18px;
+  color: #16283f;
+}
+
+  .track {
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+
+  .fill {
+    height: 100%;
+    background: #2c83bb;
+    border-radius: 10px;
+  }
+
+.metric:has(.fill[style*="width: ;"]) .track {
+  display: none;
+}
+
+.metric:has(.metric-heading span:empty):has(.metric-heading strong:empty) {
+  display: none;
+}
+
+  .footer {
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #e5eaf0;
+    font-size: 12px;
+    color: #64748b;
+  }
+</style>
+</head>
+
+
+<body>
+  <div class="report">
+    <div class="eyebrow">Hexavalue</div>
+
+
+    <h1>Business Assessment Report</h1>
+
+
+    <div class="subtitle">
+      Organizational, Financial & ESG Performance
+    </div>
+
+
+    <div class="section-title">
+      Assessment Results
+    </div>
+
+
+    <div class="metrics">
+      {{5.text}}
+    </div>
+
+
+    <div class="footer">
+      Confidential | Hexavalue
+    </div>
+  </div>
+
+<script>
+document.querySelectorAll('.fill').forEach(bar => {
+  const percentage = parseFloat(bar.style.width);
+
+  if (isNaN(percentage)) {
+    bar.closest('.track').style.display = 'none';
+    return;
+  }
+
+  if (percentage < 50) {
+    bar.style.backgroundColor = '#e74c3c';
+  } else if (percentage <= 65) {
+    bar.style.backgroundColor = '#f1c40f';
+  } else {
+    bar.style.backgroundColor = '#2c83bb';
+  }
+});
+</script>
+
+</body>
+</html>
+
+<!--Outlook Body Content-->
+
+<p>Hello,</p>
+
+<p>Please find below your business assessment results.</p>
+
+<img src="{{12.url}}" width="700"
+style="max-width:100%;height:auto;display:block;">
+
+<p>Best regards,
+<div style="white-space: pre-line;">
+<br>Hexavalue</p>
